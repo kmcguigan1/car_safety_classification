@@ -1,0 +1,14 @@
+| names file (C4.5 format) for car evaluation domain
+
+| class values
+
+unacc, acc, good, vgood
+
+| attributes
+
+buying:   low, med, high, vhigh
+maint:    low, med, high, vhigh
+doors:    2, 3, 4, 5more
+persons:  2, 4, more
+lug_boot: small, med, big
+safety:   low, med, high

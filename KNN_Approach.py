@@ -46,7 +46,7 @@ def get_encoded_data():
         # fit the encoder to the data and transform the data using the encoder
         data[col] = encoder.fit_transform(np.reshape(data[col].values, newshape=(-1,1)))
         # print the encoder categories
-        print(f"{col}: {encoder.categories_[0]}")
+        #print(f"{col}: {encoder.categories_[0]}")
         # save the encoder for later use in predictions
         encoders[col] = encoder
     return data, encoders
@@ -73,7 +73,7 @@ def get_best_model(x_train, x_test, y_train, y_test):
             # test the knn
             score = knn.score(x_test, y_test)
             # output the results
-            #print(f"Weighting {weighting}, K {k}, score {score}")
+            print(f"Weighting {weighting}, K {k}, score {score}")
             # if the score is better than the current best score save this entry as the best score
             if(score > best_result["score"]):
                 best_result = {"weighting":weighting, "k":k, "score":score}
@@ -95,7 +95,7 @@ def get_model(x_train, x_test, y_train, y_test):
     # score the model
     score = knn.score(x_test, y_test)
     # show the score
-    print(f"\nScore {score}")
+    print(f"\nScore {score} using K of {K} and weighting of {WEIGHT_TYPE}")
     # return the model
     return knn
 
@@ -108,7 +108,7 @@ def main():
     # get the split data
     x_train, x_test, y_train, y_test = split_data(data)
     # get the best model
-    knn = get_model(x_train, x_test, y_train, y_test)
+    knn = get_best_model(x_train, x_test, y_train, y_test)
     # now lets do some graphing to see how the data relates to the classifications
     return 
 
